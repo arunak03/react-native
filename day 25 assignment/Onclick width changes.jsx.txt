@@ -1,0 +1,26 @@
+import React, { useState } from 'react';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
+
+const styles = StyleSheet.create({
+  box: { width: 200, height: 100, backgroundColor: 'gray', marginBottom: 10 },
+  firstbox: { marginTop: 50 },
+});
+
+export default function App() {
+  const [changewidth, setchangewidth] = useState(false);
+
+  const handleBoxClick = () => {
+    setchangewidth(!changewidth);
+  };
+
+  return (
+    <View>
+      <TouchableOpacity onPress={handleBoxClick}>
+        <View style={[styles.box, styles.firstbox, changewidth ?  { width: '100%' }: { width: '50%' }]}></View>
+      </TouchableOpacity>
+      <View style={{ ...styles.box, backgroundColor: 'cyan' }}></View>
+      <View style={{ ...styles.box, backgroundColor: 'yellow' }}></View>
+      <View style={{ ...styles.box, backgroundColor: 'black' }}></View>
+    </View>
+  );
+}
